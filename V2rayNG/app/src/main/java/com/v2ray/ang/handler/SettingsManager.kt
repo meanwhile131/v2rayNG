@@ -387,6 +387,39 @@ object SettingsManager {
     }
 
     /**
+     * Check if auto-select is enabled.
+     * @return True if auto-select is enabled, false otherwise.
+     */
+    fun isAutoSelectEnabled(): Boolean {
+        return MmkvManager.decodeSettingsBool(AppConfig.PREF_AUTO_SELECT_ENABLED, false)
+    }
+
+    /**
+     * Returns the GUID auto-select last chose, so a restart caused by its own switch is not
+     * mistaken for a fresh start that should re-optimize.
+     */
+    fun getAutoSelectChosenGuid(): String? =
+        MmkvManager.decodeSettingsString(AppConfig.PREF_AUTO_SELECT_CHOSEN)?.takeIf { it.isNotBlank() }
+
+    /**
+     * Records the GUID auto-select just switched to.
+     */
+    fun setAutoSelectChosenGuid(guid: String) {
+        MmkvManager.encodeSettings(AppConfig.PREF_AUTO_SELECT_CHOSEN, guid)
+    }
+
+    /**
+     * Get the auto-select health check interval in minutes.
+     * @return The interval in minutes (clamped to 1..1440).
+     */
+    fun getAutoSelectIntervalMinutes(): Int {
+        val value = MmkvManager.decodeSettingsString(AppConfig.PREF_AUTO_SELECT_INTERVAL_MINUTES)?.toIntOrNull() ?: 5
+        return value.coerceIn(1, 1440)
+    }
+
+    
+
+    /**
      * Retrieves the currently selected VPN interface address configuration.
      * This method reads the user's preference for VPN interface addressing and returns
      * the corresponding configuration containing IPv4 and IPv6 addresses.

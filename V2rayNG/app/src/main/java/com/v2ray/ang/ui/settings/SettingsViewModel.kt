@@ -57,6 +57,20 @@ class SettingsViewModel(application: Application) : BaseViewModel(application) {
     }
 
     /**
+     * Validates the auto-select health check interval in whole minutes.
+     * Shows an error toast and returns null when the input is not a usable positive whole number,
+     * so an unparsable value is never persisted over the last valid one.
+     *
+     * @return The trimmed value if valid, null otherwise.
+     */
+    fun validateAutoSelectInterval(value: String): String? {
+        return AutoSelectIntervalValidator.normalize(value) ?: run {
+            toastError(R.string.toast_invalid_auto_select_interval)
+            null
+        }
+    }
+
+    /**
      * Validates if the given string is a valid observatory sampling value.
      * Shows error toast if invalid.
      * @return The value if valid, null otherwise.

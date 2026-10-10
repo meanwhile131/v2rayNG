@@ -9,6 +9,7 @@ import com.v2ray.ang.R
 import com.v2ray.ang.extension.isComplexType
 import com.v2ray.ang.extension.toast
 import com.v2ray.ang.extension.toastError
+import com.v2ray.ang.handler.AutoSelectManager
 import com.v2ray.ang.handler.MmkvManager
 import com.v2ray.ang.handler.SettingsManager
 import com.v2ray.ang.helper.MessageHelper
@@ -22,7 +23,9 @@ import com.v2ray.ang.util.Utils
 object LauncherManager {
 
     fun startServiceFromToggle(context: Context): Boolean {
-        if (MmkvManager.getSelectServer().isNullOrEmpty()) {
+        // Only refuse when there is genuinely nothing to run. A missing selection is filled in
+        // below, so the tile must not demand a manual pick first.
+        if (MmkvManager.decodeAllServerList().isEmpty()) {
             context.toast(R.string.app_tile_first_use)
             return false
         }
@@ -68,14 +71,34 @@ object LauncherManager {
         }
     }
 
+    /**
+     * Resolves the config to launch.
+     *
+     * A stored selection is honoured when it still decodes. Otherwise the first available profile
+     * is selected, so a start never waits on the user choosing a config by hand; the auto-select
+     * worker then improves on it by measured delay.
+     *
+     * @return A usable config GUID, or null when the app has no profile to run.
+     */
+    private fun resolveGuidToStart(): String? {
+        val selected = MmkvManager.getSelectServer()
+        if (selected != null && MmkvManager.decodeServerConfig(selected) != null) {
+            return selected
+        }
+        val first = AutoSelectManager.firstUsableGuid() ?: return null
+        LogUtil.i(AppConfig.TAG, "LauncherManager: no usable selection, auto-selecting $first")
+        MmkvManager.setSelectServer(first)
+        return first
+    }
+
     @Throws(Exception::class)
     private fun startContextService(context: Context) {
         // Note: isRunning check is removed here to avoid loading Native libraries in the UI process.
         // The check is performed in CoreServiceManager when the service starts in the daemon process.
 
-        val guid = MmkvManager.getSelectServer()
+        val guid = resolveGuidToStart()
             ?: run {
-                LogUtil.e(AppConfig.TAG, "LauncherManager: No server selected")
+                LogUtil.e(AppConfig.TAG, "LauncherManager: No server available")
                 error(context.getString(R.string.app_tile_first_use))
             }
 

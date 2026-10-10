@@ -17,6 +17,8 @@
     <string name="notification_channel_service">سرویس v2rayNG</string>
     <string name="notification_channel_subscription_updates">ورۊ کردن اشتراکا</string>
     <string name="notification_channel_connection_checks">واجۊری منپیز</string>
+    <string name="notification_channel_auto_select">گەڕین خودکار سروەر</string>
+    <string name="title_auto_select_monitoring">پایش حالت سروەر</string>
     <string name="notification_action_stop_v2ray">واڌاشتن</string>
     <string name="toast_permission_denied">گرؽڌن موجوز مومکن نؽڌ</string>
     <string name="toast_permission_denied_notification">گرؽڌن موجوز وارسۊوی مومکن نؽڌ</string>
@@ -243,6 +245,10 @@
     <string name="title_pref_delay_test_url">نشۊوی اینترنتی آزمایش تئخیر واقعی</string>
     <string name="summary_pref_delay_test_url" translatable="false">URL</string>
     <string name="title_pref_real_ping_concurrency">تعداڌ هوم زمووی تست تئخیر واقعی</string>
+    <string name="title_pref_auto_select_enabled">گەڕین خودکار باشترین سروەر</string>
+    <string name="summary_pref_auto_select_enabled">هەموو سروەر یا تەخیر واقعی بەرەوام پێشکەش دکەن و کۆنفیگوراسیۆنی چالاک بوو دەگوهێنە سروەری خێراتر. بۆ کارکردن پێدەبێت خزمەتگوزاریەکە دووبارە دەستپێبکەیەن.</string>
+    <string name="title_pref_auto_select_interval_minutes">فاصلە چاودێری تەندروستی (خولەک)</string>
+    <string name="toast_invalid_auto_select_interval">شوماره‌ی ۱ تا ۱۴۴۰ خولەک بگیرین.</string>
 
     <string name="title_pref_ip_api_url">نشۊوی اینترنتی آزمایش دووسمندیا منپیز هیم سکویی</string>
     <string name="summary_pref_ip_api_url" translatable="false">URL</string>

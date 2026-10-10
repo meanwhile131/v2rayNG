@@ -17,6 +17,8 @@
     <string name="notification_channel_service">v2rayNG সার্ভিস</string>
     <string name="notification_channel_subscription_updates">সাবস্ক্রিপশন আপডেট</string>
     <string name="notification_channel_connection_checks">সংযোগ পরীক্ষা</string>
+    <string name="notification_channel_auto_select">স্বয়ংক্রিয় সার্ভার নির্বাচন</string>
+    <string name="title_auto_select_monitoring">সার্ভারের অবস্থা পর্যবেক্ষণ করা হচ্ছে</string>
     <string name="notification_action_stop_v2ray">বন্ধ করুন</string>
     <string name="toast_permission_denied">অনুমতি পাওয়া যাচ্ছে না</string>
     <string name="toast_permission_denied_notification">বিজ্ঞপ্তির অনুমতি পাওয়া যায়নি</string>
@@ -243,6 +245,10 @@
     <string name="title_pref_delay_test_url">প্রকৃত বিলম্ব পরীক্ষার URL</string>
     <string name="summary_pref_delay_test_url" translatable="false">URL</string>
     <string name="title_pref_real_ping_concurrency">একযোগে প্রকৃত বিলম্ব পরীক্ষা</string>
+    <string name="title_pref_auto_select_enabled">স্বয়ংক্রিয়ভাবে সেরা সার্ভার বেছে নিন</string>
+    <string name="summary_pref_auto_select_enabled">নিয়মিতভাবে প্রকৃত বিলম্বের মাধ্যমে সব সার্ভার পরীক্ষা করে এবং চলমান কনফিগারেশন বন্ধ হয়ে গেলে দ্রুততর সার্ভারে স্থানান্তর করে। কার্যকর করতে পরিষেবাটি পুনরায় চালু করতে হবে।</string>
+    <string name="title_pref_auto_select_interval_minutes">স্বাস্থ্য পরীক্ষার ব্যবধান (মিনিট)</string>
+    <string name="toast_invalid_auto_select_interval">1 থেকে 1440 পর্যন্ত পূর্ণসংখ্যা মিনিট লিখুন</string>
 
     <string name="title_pref_ip_api_url">বর্তমান সংযোগের তথ্য পরীক্ষার URL</string>
     <string name="summary_pref_ip_api_url" translatable="false">URL</string>

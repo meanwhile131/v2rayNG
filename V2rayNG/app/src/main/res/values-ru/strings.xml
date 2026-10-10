@@ -17,6 +17,8 @@
     <string name="notification_channel_service">Служба v2rayNG</string>
     <string name="notification_channel_subscription_updates">Обновления подписок</string>
     <string name="notification_channel_connection_checks">Проверки соединения</string>
+    <string name="notification_channel_auto_select">Автовыбор сервера</string>
+    <string name="title_auto_select_monitoring">Проверка состояния сервера</string>
     <string name="notification_action_stop_v2ray">Остановить</string>
     <string name="toast_permission_denied">Разрешение не получено</string>
     <string name="toast_permission_denied_notification">Разрешение на отображение уведомлений не получено</string>
@@ -243,6 +245,10 @@
     <string name="title_pref_delay_test_url">Сервис проверки реальной задержки</string>
     <string name="summary_pref_delay_test_url" translatable="false">URL</string>
     <string name="title_pref_real_ping_concurrency">Параллельные тесты реальной задержки</string>
+    <string name="title_pref_auto_select_enabled">Автовыбор лучшего сервера</string>
+    <string name="summary_pref_auto_select_enabled">Периодически проверяет все серверы по реальной задержке и переключает работающую конфигурацию на более быструю, если она перестала работать. Требуется перезапуск службы.</string>
+    <string name="title_pref_auto_select_interval_minutes">Интервал проверки (минуты)</string>
+    <string name="toast_invalid_auto_select_interval">Введите целое число минут от 1 до 1440</string>
 
     <string name="title_pref_ip_api_url">Сервис проверки текущего соединения</string>
     <string name="summary_pref_ip_api_url" translatable="false">URL</string>

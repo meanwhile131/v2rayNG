@@ -17,6 +17,8 @@
     <string name="notification_channel_service">خدمة v2rayNG</string>
     <string name="notification_channel_subscription_updates">تحديثات الاشتراكات</string>
     <string name="notification_channel_connection_checks">فحوص الاتصال</string>
+    <string name="notification_channel_auto_select">اختيار الخادم تلقائيًا</string>
+    <string name="title_auto_select_monitoring">مراقبة حالة الخادم</string>
     <string name="notification_action_stop_v2ray">إيقاف</string>
     <string name="toast_permission_denied">تعذر الحصول على الإذن</string>
     <string name="toast_permission_denied_notification">تعذر الحصول على إذن الإشعارات</string>
@@ -243,6 +245,10 @@
     <string name="title_pref_delay_test_url">عنوان URL لاختبار التأخير الحقيقي</string>
     <string name="summary_pref_delay_test_url" translatable="false">URL</string>
     <string name="title_pref_real_ping_concurrency">اختبارات تأخير حقيقي متزامنة</string>
+    <string name="title_pref_auto_select_enabled">اختيار أفضل خادم تلقائيًا</string>
+    <string name="summary_pref_auto_select_enabled">يختبر جميع الخوادم دوريًا حسب التأخير الحقيقي ويبدّل الإعداد الجاري إلى خادم أسرع عند توقفه عن العمل. يتطلب إعادة تشغيل الخدمة.</string>
+    <string name="title_pref_auto_select_interval_minutes">فترة فحص الحالة (دقائق)</string>
+    <string name="toast_invalid_auto_select_interval">أدخل عددًا صحيحًا من الدقائق بين 1 و1440</string>
 
     <string name="title_pref_ip_api_url">عنوان URL لاختبار معلومات الاتصال الحالي</string>
     <string name="summary_pref_ip_api_url" translatable="false">URL</string>

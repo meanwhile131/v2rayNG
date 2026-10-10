@@ -17,6 +17,8 @@
     <string name="notification_channel_service">v2rayNG 服務</string>
     <string name="notification_channel_subscription_updates">訂閱更新</string>
     <string name="notification_channel_connection_checks">連線檢查</string>
+    <string name="notification_channel_auto_select">自動選擇伺服器</string>
+    <string name="title_auto_select_monitoring">正在監測伺服器狀態</string>
     <string name="notification_action_stop_v2ray">停止</string>
     <string name="toast_permission_denied">無法取得此權限</string>
     <string name="toast_permission_denied_notification">無法取得此通知權限</string>
@@ -243,6 +245,10 @@
     <string name="title_pref_delay_test_url">真連接延遲測試 URL</string>
     <string name="summary_pref_delay_test_url" translatable="false">URL</string>
     <string name="title_pref_real_ping_concurrency">同時執行的真實延遲測試數</string>
+    <string name="title_pref_auto_select_enabled">自動選擇最快伺服器</string>
+    <string name="summary_pref_auto_select_enabled">定期透過真實延遲測試所有伺服器，當目前設定停止工作時切換到更快的伺服器。需要重新啟動服務後生效。</string>
+    <string name="title_pref_auto_select_interval_minutes">健康檢查間隔（分鐘）</string>
+    <string name="toast_invalid_auto_select_interval">請輸入 1 到 1440 之間的整數分鐘</string>
 
     <string name="title_pref_ip_api_url">目前連線資訊測試 URL</string>
     <string name="summary_pref_ip_api_url" translatable="false">URL</string>

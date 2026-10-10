@@ -17,6 +17,8 @@
     <string name="notification_channel_service">v2rayNG service</string>
     <string name="notification_channel_subscription_updates">Subscription updates</string>
     <string name="notification_channel_connection_checks">Connection checks</string>
+    <string name="notification_channel_auto_select">Auto server selection</string>
+    <string name="title_auto_select_monitoring">Monitoring server health</string>
     <string name="notification_action_stop_v2ray">Stop</string>
     <string name="toast_permission_denied">Permission denied</string>
     <string name="toast_permission_denied_notification">Notification permission denied</string>
@@ -243,6 +245,11 @@
     <string name="title_pref_delay_test_url">Real delay test URL</string>
     <string name="summary_pref_delay_test_url" translatable="false">URL</string>
     <string name="title_pref_real_ping_concurrency">Concurrent real-delay tests</string>
+
+    <string name="title_pref_auto_select_enabled">Auto select best server</string>
+    <string name="summary_pref_auto_select_enabled">Periodically test all servers by real delay and switch the running config to a faster one when it stops working. Requires a restarted service to take effect.</string>
+    <string name="title_pref_auto_select_interval_minutes">Health check interval (minutes)</string>
+    <string name="toast_invalid_auto_select_interval">Enter a whole number of minutes between 1 and 1440</string>
 
     <string name="title_pref_ip_api_url">Current connection info test URL</string>
     <string name="summary_pref_ip_api_url" translatable="false">URL</string>

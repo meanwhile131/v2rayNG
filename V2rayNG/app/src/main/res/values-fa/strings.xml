@@ -17,6 +17,8 @@
     <string name="notification_channel_service">سرویس v2rayNG</string>
     <string name="notification_channel_subscription_updates">به‌روزرسانی اشتراک‌ها</string>
     <string name="notification_channel_connection_checks">بررسی اتصال</string>
+    <string name="notification_channel_auto_select">انتخاب خودکار سرور</string>
+    <string name="title_auto_select_monitoring">در حال پایش سلامت سرور</string>
     <string name="notification_action_stop_v2ray">توقف</string>
     <string name="toast_permission_denied">امکان دریافت مجوز وجود ندارد</string>
     <string name="toast_permission_denied_notification">امکان دریافت مجوز ارسال اعلان وجود ندارد</string>
@@ -243,6 +245,10 @@
     <string name="title_pref_delay_test_url">URL آزمایش تأخیر واقعی</string>
     <string name="summary_pref_delay_test_url" translatable="false">URL</string>
     <string name="title_pref_real_ping_concurrency">آزمایش‌های هم‌زمان تأخیر واقعی</string>
+    <string name="title_pref_auto_select_enabled">انتخاب خودکار بهترین سرور</string>
+    <string name="summary_pref_auto_select_enabled">به‌طور دوره‌ای همه سرورها را با تأخیر واقعی آزمایش می‌کند و در صورت از کار افتادن پیکربندی در حال اجرا، آن را به سرور سریع‌تری تغییر می‌دهد. برای اعمال، سرویس باید دوباره راه‌اندازی شود.</string>
+    <string name="title_pref_auto_select_interval_minutes">بازهٔ بررسی سلامت (دقیقه)</string>
+    <string name="toast_invalid_auto_select_interval">عدد صحیحی از ۱ تا ۱۴۴۰ دقیقه وارد کنید</string>
 
     <string name="title_pref_ip_api_url">URL آزمایش اطلاعات اتصال فعلی</string>
     <string name="summary_pref_ip_api_url" translatable="false">URL</string>

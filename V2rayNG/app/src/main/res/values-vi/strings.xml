@@ -17,6 +17,8 @@
     <string name="notification_channel_service">Dịch vụ v2rayNG</string>
     <string name="notification_channel_subscription_updates">Cập nhật gói đăng ký</string>
     <string name="notification_channel_connection_checks">Kiểm tra kết nối</string>
+    <string name="notification_channel_auto_select">Tự động chọn máy chủ</string>
+    <string name="title_auto_select_monitoring">Đang theo dõi tình trạng máy chủ</string>
     <string name="notification_action_stop_v2ray">Ngắt kết nối v2rayNG</string>
     <string name="toast_permission_denied">Vui lòng cấp các quyền cần thiết cho v2rayNG. Bạn có thể đã từ chối quyền truy cập máy ảnh hoặc bộ nhớ.</string>
     <string name="toast_permission_denied_notification">Không thể nhận quyền thông báo</string>
@@ -243,6 +245,10 @@
     <string name="title_pref_delay_test_url">URL kiểm tra độ trễ thực</string>
     <string name="summary_pref_delay_test_url" translatable="false">URL</string>
     <string name="title_pref_real_ping_concurrency">Số lượt kiểm tra độ trễ thực đồng thời</string>
+    <string name="title_pref_auto_select_enabled">Tự động chọn máy chủ tốt nhất</string>
+    <string name="summary_pref_auto_select_enabled">Định kỳ kiểm tra tất cả máy chủ theo độ trễ thực và chuyển cấu hình đang chạy sang máy chủ nhanh hơn khi nó ngừng hoạt động. Cần khởi động lại dịch vụ để có hiệu lực.</string>
+    <string name="title_pref_auto_select_interval_minutes">Khoảng kiểm tra sức khỏe (phút)</string>
+    <string name="toast_invalid_auto_select_interval">Nhập số phút nguyên từ 1 đến 1440</string>
 
     <string name="title_pref_ip_api_url">URL kiểm tra thông tin kết nối hiện tại</string>
     <string name="summary_pref_ip_api_url" translatable="false">URL</string>

@@ -276,6 +276,16 @@
                 android:value="test" />
         </service>
 
+        <service
+            android:name=".service.AutoSelectWorkerService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":tasks">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="test" />
+        </service>
+
         <receiver
             android:name=".receiver.WidgetProvider"
             android:exported="true"

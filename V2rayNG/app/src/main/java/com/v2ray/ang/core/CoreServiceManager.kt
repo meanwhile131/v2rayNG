@@ -25,6 +25,7 @@ import com.v2ray.ang.handler.NotificationManager
 import com.v2ray.ang.handler.SettingsManager
 import com.v2ray.ang.handler.SpeedtestManager
 import com.v2ray.ang.helper.MessageHelper
+import com.v2ray.ang.service.AutoSelectWorkerService
 import com.v2ray.ang.service.DialerNativeService
 import com.v2ray.ang.service.DialerWebviewService
 import com.v2ray.ang.service.NetworkMonitor
@@ -123,6 +124,7 @@ object CoreServiceManager {
         currentVpnInterface = vpnInterface
         launchCore(service, vpnInterface)
         startNetworkMonitor(service)
+        startAutoSelectWorker(service)
     }
 
     @Throws(Exception::class)
@@ -193,6 +195,7 @@ object CoreServiceManager {
         connectionTestScope.coroutineContext.cancelChildren()
         val service = getService() ?: return false
 
+        stopAutoSelectWorker(service)
         networkMonitor?.unregister()
         networkMonitor = null
         currentVpnInterface = null
@@ -276,6 +279,32 @@ object CoreServiceManager {
             false
         } finally {
             isReloading = false
+        }
+    }
+
+    /**
+     * Starts the auto-select worker service if auto-select is enabled.
+     * The worker periodically health-checks servers and switches to the best working one.
+     */
+    private fun startAutoSelectWorker(service: Service) {
+        if (!SettingsManager.isAutoSelectEnabled()) return
+        try {
+            val intent = Intent(service.applicationContext, AutoSelectWorkerService::class.java)
+            ContextCompat.startForegroundService(service.applicationContext, intent)
+        } catch (e: Exception) {
+            LogUtil.e(AppConfig.TAG, "StartCore-Manager: Failed to start AutoSelectWorkerService", e)
+        }
+    }
+
+    /**
+     * Stops the auto-select worker service.
+     */
+    private fun stopAutoSelectWorker(service: Service) {
+        try {
+            val intent = Intent(service.applicationContext, AutoSelectWorkerService::class.java)
+            service.applicationContext.stopService(intent)
+        } catch (e: Exception) {
+            LogUtil.e(AppConfig.TAG, "StartCore-Manager: Failed to stop AutoSelectWorkerService", e)
         }
     }
 
@@ -502,6 +531,17 @@ object CoreServiceManager {
                 AppConfig.MSG_MEASURE_DELAY -> {
                     if (isOrderedBroadcast) resultCode = Activity.RESULT_OK
                     measureV2rayDelay(intent.getStringExtra("content").orEmpty())
+                }
+
+                AppConfig.MSG_AUTO_SELECT_RUNNING -> {
+                    // The auto-select worker runs in the tasks process and cannot read
+                    // isRunning() across the process boundary, so it needs a real
+                    // acknowledgement instead of inferring daemon state from send success.
+                    // RESULT_OK is returned only while the core runs; an absent daemon leaves
+                    // the default RESULT_CANCELED, and so does a reachable daemon with no core.
+                    if (isOrderedBroadcast) {
+                        resultCode = if (isRunning()) Activity.RESULT_OK else Activity.RESULT_CANCELED
+                    }
                 }
             }
 

@@ -179,6 +179,8 @@ fun SettingsScreen(
     var isBooted by rememberMmkvBool(AppConfig.PREF_IS_BOOTED, false)
     var delayTestUrl by rememberMmkvString(AppConfig.PREF_DELAY_TEST_URL, "")
     var realPingConcurrency by rememberMmkvString(AppConfig.PREF_REAL_PING_CONCURRENCY, "16")
+    var autoSelectEnabled by rememberMmkvBool(AppConfig.PREF_AUTO_SELECT_ENABLED, false)
+    var autoSelectInterval by rememberMmkvString(AppConfig.PREF_AUTO_SELECT_INTERVAL_MINUTES, "5")
     var ipApiUrl by rememberMmkvString(AppConfig.PREF_IP_API_URL, "")
 
     val isVpn = mode == VPN
@@ -661,6 +663,24 @@ fun SettingsScreen(
                     value = realPingConcurrency,
                     keyboardNumber = true,
                     onValueChanged = { realPingConcurrency = it }
+                )
+                SettingsSwitchItem(
+                    title = stringResource(R.string.title_pref_auto_select_enabled),
+                    summary = stringResource(R.string.summary_pref_auto_select_enabled),
+                    checked = autoSelectEnabled,
+                    onCheckedChange = { autoSelectEnabled = it }
+                )
+                
+                SettingsEditItem(
+                    title = stringResource(R.string.title_pref_auto_select_interval_minutes),
+                    value = autoSelectInterval,
+                    enabled = autoSelectEnabled,
+                    keyboardNumber = true,
+                    onValueChanged = {
+                        viewModel.validateAutoSelectInterval(it)?.let { value ->
+                            autoSelectInterval = value
+                        }
+                    }
                 )
                 SettingsEditItem(
                     title = stringResource(R.string.title_pref_ip_api_url),
